@@ -19,7 +19,7 @@ public class PetInfo extends Activity {
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         birthday = (TextView) findViewById(R.id.pet_birth);
-        birthday.setText("Birthday: " + getCurrentDate());
+        birthday.setText(birthday.getText() + getCurrentDate());
     }
 
 
