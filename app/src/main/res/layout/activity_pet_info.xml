@@ -49,13 +49,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/pet_female"
             android:text="F"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:onClick="onGenderClicked"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/pet_male"
-            android:text="M" />
-
+            android:text="M"
+            android:layout_marginRight="20dp"
+            android:onClick="onGenderClicked"/>
     </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="Next"
+        android:onClick="createMain"/>
+
 </RelativeLayout>

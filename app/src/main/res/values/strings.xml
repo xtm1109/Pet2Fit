@@ -11,4 +11,5 @@
     <string name="about_text">More info later</string>
     <string name="title_activity_new_game">NewGame</string>
     <string name="title_activity_pet_info">PetInfo</string>
+    <string name="title_activity_main_game">MainGame</string>
 </resources>
