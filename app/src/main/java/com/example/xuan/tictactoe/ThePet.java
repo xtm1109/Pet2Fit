@@ -1,5 +1,12 @@
 package com.example.xuan.tictactoe;
 
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -9,7 +16,7 @@ public final class ThePet {
     private static String pet_name = "name";
     private static String pet_birthday = "01/01/1970";
     private static String pet_gender = "gender";
-    private static Level pet_level = new Level();
+    private static int current_health = Level.getHealth();
 
     private ThePet() {}
 
@@ -25,10 +32,6 @@ public final class ThePet {
         ThePet.pet_gender = gender;
     }
 
-    static public void setLevel (Level lv) {
-        ThePet.pet_level = lv;
-    }
-
     static public String getName() {
         return ThePet.pet_name;
     }
@@ -41,26 +44,43 @@ public final class ThePet {
         return ThePet.pet_gender;
     }
 
+    static public int getCurrentHealth() {
+        return ThePet.current_health;
+    }
+
+    static public int getLevelHealth() {
+        return Level.getHealth();
+    }
+
     private static class Level {
-        private int pet_level;
-        private int pet_health;
-        private int pet_stamina;
-        private int pet_xp;
+        private static int pet_level;
+        private static int pet_health;
+        private static int pet_stamina;
+        private static int pet_xp;
 
-        private Level() {
-            this.pet_level = 1;
-            this.pet_health = 100;
-            this.pet_stamina = 50;
-            this.pet_xp = 0;
+        static private int getHealth() {
+            return Level.pet_health;
         }
 
-        private Level(int lv, int h, int s, int xp) {
-            this.pet_level = lv;
-            this.pet_health = h;
-            this.pet_stamina = s;
-            this.pet_xp = xp;
-        }
+        static private void setLevel(XmlResourceParser xrp) throws XmlPullParserException, IOException {
+            int eventType = xrp.getEventType();
 
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_DOCUMENT) {
+                    // do something
+                }
+                else if (eventType == XmlPullParser.START_TAG) {
+                    // do something
+                }
+                else if (eventType == XmlPullParser.END_TAG) {
+                    // do something
+                }
+                else if (eventType == XmlPullParser.TEXT) {
+                    // do something
+                }
+                eventType = xrp.next();
+            }
+        }
 
     }
 

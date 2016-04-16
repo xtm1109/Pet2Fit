@@ -1,6 +1,8 @@
 package com.example.xuan.tictactoe;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -16,6 +18,8 @@ public class PetInfo extends Activity {
     TextView birthday;
     EditText name;
     String gender;
+    Resources res;
+    XmlResourceParser xrp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,9 @@ public class PetInfo extends Activity {
 
         birthday = (TextView) findViewById(R.id.pet_birth);
         birthday.setText(birthday.getText() + getCurrentDate());
+
+        res = this.getResources();
+        xrp = res.getXml(R.xml.levels);
     }
 
 

@@ -24,20 +24,31 @@ public class MainGameView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
         drawHealthBar(canvas);
-        drawStaminaBar(canvas);
-        drawXPBar(canvas);
+//        drawStaminaBar(canvas);
+//        drawXPBar(canvas);
     }
 
     private void drawHealthBar(Canvas canvas) {
+        // Draw border
+        paint.setStrokeWidth(7);
+        paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(3);
         canvas.drawRect(h_bar, paint);
-        paint.setStrokeWidth(0);
+
+        // Draw rect fill
+        paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.CYAN);
         canvas.drawRect(h_bar, paint);
-        paint.setColor(Color.YELLOW);
-        canvas.drawRect(h_bar, paint);
+
+        // Draw pet's health
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.MAGENTA);
+        canvas.drawRect(h_bar.left, h_bar.top,
+                h_bar.left + ((ThePet.getCurrentHealth() * bar_width) / ThePet.getLevelHealth()),
+                h_bar.bottom, paint);
     }
 
     private void drawStaminaBar(Canvas canvas) {
