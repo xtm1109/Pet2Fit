@@ -70,6 +70,7 @@ public class PetInfo extends Activity {
         ThePet.setBirthday(getCurrentDate());
         ThePet.setGender(gender);
 
+        // New game so pet level is the lowest level, which is level 1
         ThePet.setPetLevel(xrp, 1);
 
         Intent intent = new Intent (this, MainGame.class);

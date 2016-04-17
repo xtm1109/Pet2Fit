@@ -37,7 +37,7 @@ public class MainGameView extends View {
 
         drawHealthBar(canvas);
         drawStaminaBar(canvas);
-//        drawXPBar(canvas);
+        drawXPBar(canvas);
     }
 
     private void drawHealthBar(Canvas canvas) {
@@ -117,11 +117,11 @@ public class MainGameView extends View {
         canvas.drawRect(s_bar, paint);
         /* ~~~ DONE ~~~ */
 
-        /* ~~~ Draw current health of the pet ~~~ */
+        /* ~~~ Draw current stamina of the pet ~~~ */
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.MAGENTA);
         // drawRect draws at left, top, right, bottom
-        // Fill in the health bar depends of the current health of the pet
+        // Fill in the stamina bar depends of the current health of the pet
         canvas.drawRect(s_bar.left, s_bar.top,
                 s_bar.left + ((ThePet.getCurrentStamina() * bar_width) / ThePet.getLevelStamina()),
                 s_bar.bottom, paint);
@@ -138,14 +138,39 @@ public class MainGameView extends View {
         /* ~~~ DONE ~~~ */
     }
 
-//    private void drawXPBar(Canvas canvas) {
-//        paint.setColor(Color.BLACK);
-//        paint.setStrokeWidth(3);
-//        canvas.drawRect(xp_bar, paint);
-//        paint.setStrokeWidth(0);
-//        paint.setColor(Color.CYAN);
-//        canvas.drawRect(xp_bar, paint);
-//        paint.setColor(Color.YELLOW);
-//        canvas.drawRect(xp_bar, paint );
-//    }
+    private void drawXPBar(Canvas canvas) {
+        // A RectF for text
+        RectF text_box = new RectF(margin_x+bar_width, margin_y,
+                margin_x+bar_width*2, margin_y+bar_height);
+        // A RectF for bar
+        RectF xp_bar = new RectF(text_box.left, text_box.bottom,
+                text_box.left+bar_width, text_box.bottom+bar_height);
+        // A Rect that bounds around the text
+        Rect text_bound;
+        String text = "XP";
+        String xp_text = Integer.toString(ThePet.getCurrentXP())
+                + "/" + Integer.toString(ThePet.getLevelXP());
+
+        /* ~~~ Write current xp of the pet ~~~ */
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(text_size);
+        text_bound = new Rect();
+        paint.getTextBounds(xp_text, 0, xp_text.length(), text_bound);
+        // drawRect draws at left, top, right, bottom
+        // Fill in the health bar depends of the current health of the pet
+        canvas.drawText(xp_text, xp_bar.left + (xp_bar.width() - text_bound.width()) / 2,
+                xp_bar.bottom - (xp_bar.height() - text_bound.height()) / 2, paint);
+        /* ~~~ DONE ~~~ */
+
+        /* ~~~ Draw text ~~~ */
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(text_size);
+        text_bound = new Rect();
+        paint.getTextBounds(text, 0, text.length(), text_bound);
+        // drawText draws at left, bottom
+        // That is, it starts drawing at the bottom left corner of a rect
+        canvas.drawText(text, text_box.left + (text_box.width()-text_bound.width())/2,
+                text_box.bottom - (text_box.height()-text_bound.height())/2, paint);
+        /* ~~~ DONE ~~~ */
+    }
 }

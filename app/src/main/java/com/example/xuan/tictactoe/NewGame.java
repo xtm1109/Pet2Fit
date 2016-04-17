@@ -1,8 +1,10 @@
 package com.example.xuan.tictactoe;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 public class NewGame extends Activity {
@@ -33,7 +35,13 @@ public class NewGame extends Activity {
     }
 
     public void createInfo(View view) {
-        Intent intent = new Intent(NewGame.this, PetInfo.class);
+        // Save the preference that there is an existing game
+        // So user can continue the game
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putBoolean("existed_game", true).commit();
+
+        // Start a new game
+        Intent intent = new Intent(this, PetInfo.class);
         startActivity(intent);
     }
 }

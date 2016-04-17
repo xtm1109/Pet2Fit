@@ -16,8 +16,9 @@ public final class ThePet {
     private static String pet_name = "name";
     private static String pet_birthday = "01/01/1970";
     private static String pet_gender = "gender";
-    private static int current_health = 50;
-    private static int current_stamina = 40;
+    private static int current_health;
+    private static int current_stamina;
+    private static int current_xp;
 
     private ThePet() {}
 
@@ -35,6 +36,24 @@ public final class ThePet {
 
     public static void setPetLevel(XmlResourceParser xrp, int lv) throws IOException, XmlPullParserException {
         Level.setLevel(xrp, lv);
+        ThePet.setCurrentHealth(ThePet.getLevelHealth());
+        ThePet.setCurrentStamina(ThePet.getLevelStamina());
+        ThePet.setCurrentXP(0);
+    }
+
+    public static void setCurrentHealth(int h) {
+        if (h <= ThePet.getLevelHealth())
+            ThePet.current_health = h;
+    }
+
+    public static void setCurrentStamina(int s) {
+        if (s <= ThePet.getLevelStamina())
+            ThePet.current_stamina = s;
+    }
+
+    public static void setCurrentXP(int xp) {
+        if (xp <= ThePet.getLevelXP())
+            ThePet.current_xp = xp;
     }
 
     public static String getName() {
@@ -57,6 +76,10 @@ public final class ThePet {
         return ThePet.current_stamina;
     }
 
+    public static int getCurrentXP() {
+        return ThePet.current_xp;
+    }
+
     public static int getLevelHealth() {
         return Level.getHealth();
     }
@@ -75,10 +98,6 @@ public final class ThePet {
         private static int pet_health;
         private static int pet_stamina;
         private static int pet_xp;
-
-        static private int getHealth() {
-            return Level.pet_health;
-        }
 
         static private void setLevel(XmlResourceParser xrp, int lv) throws XmlPullParserException, IOException {
             int eventType = xrp.getEventType();
@@ -127,6 +146,10 @@ public final class ThePet {
 
                 eventType = xrp.next();
             }
+        }
+
+        static private int getHealth() {
+            return Level.pet_health;
         }
 
         private static int getStamina() {
