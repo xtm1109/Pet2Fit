@@ -17,6 +17,7 @@ public final class ThePet {
     private static String pet_birthday = "01/01/1970";
     private static String pet_gender = "gender";
     private static int current_health = 50;
+    private static int current_stamina = 40;
 
     private ThePet() {}
 
@@ -50,6 +51,10 @@ public final class ThePet {
 
     public static int getCurrentHealth() {
         return ThePet.current_health;
+    }
+
+    public static int getCurrentStamina() {
+        return ThePet.current_stamina;
     }
 
     public static int getLevelHealth() {
