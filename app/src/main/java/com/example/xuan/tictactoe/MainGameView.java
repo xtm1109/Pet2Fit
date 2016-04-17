@@ -47,7 +47,7 @@ public class MainGameView extends View {
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.MAGENTA);
         canvas.drawRect(h_bar.left, h_bar.top,
-                h_bar.left + ((ThePet.getCurrentHealth() * bar_width) / ThePet.getLevelHealth()),
+                h_bar.left + ((ThePet.getCurrentHealth()*bar_width)/ThePet.getLevelHealth()),
                 h_bar.bottom, paint);
     }
 

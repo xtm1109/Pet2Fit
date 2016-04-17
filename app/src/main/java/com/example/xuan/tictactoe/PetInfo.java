@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -60,12 +63,14 @@ public class PetInfo extends Activity {
         }
     }
 
-    public void createMain(View view) {
+    public void createMain(View view) throws IOException, XmlPullParserException {
         name = (EditText) findViewById(R.id.pet_name);
 
         ThePet.setName(name.getText().toString());
         ThePet.setBirthday(getCurrentDate());
         ThePet.setGender(gender);
+
+        ThePet.setPetLevel(xrp, 1);
 
         Intent intent = new Intent (this, MainGame.class);
         startActivity(intent);

@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <levels>
 	<level>
-        <name>Level 1</name>
+        <name>1</name>
 		<health>100</health>
 		<stamina>50</stamina>
 		<xp>1200</xp>
 	</level>
 	<level>
-        <name>Level 2</name>
+        <name>2</name>
 		<health>150</health>
 		<stamina>100</stamina>
 		<xp>1600</xp>
 	</level>
 	<level>
-        <name>Level 3</name>
+        <name>3</name>
 		<health>200</health>
 		<stamina>150</stamina>
 		<xp>2000</xp>
 	</level>
 	<level>
-        <name>Level 4</name>
+        <name>4</name>
 		<health>250</health>
 		<stamina>200</stamina>
 		<xp>2500</xp>
 	</level>
 	<level>
-        <name>Level 5</name>
+        <name>5</name>
 		<health>300</health>
 		<stamina>250</stamina>
 		<xp>3000</xp>
 	</level>
 	<level>
-        <name>Level 6</name>
+        <name>6</name>
 		<health>350</health>
 		<stamina>300</stamina>
 		<xp>3500</xp>
 	</level>
 	<level>
-        <name>Level 7</name>
+        <name>7</name>
 		<health>400</health>
 		<stamina>350</stamina>
 		<xp>3600</xp>
 	</level>
 	<level>
-        <name>Level 8</name>
+        <name>8</name>
 		<health>450</health>
 		<stamina>400</stamina>
 		<xp>4200</xp>
 	</level>
 	<level>
-        <name>Level 9</name>
+        <name>9</name>
 		<health>500</health>
 		<stamina>450</stamina>
 		<xp>4800</xp>

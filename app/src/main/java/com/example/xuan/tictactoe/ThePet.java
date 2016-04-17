@@ -16,41 +16,54 @@ public final class ThePet {
     private static String pet_name = "name";
     private static String pet_birthday = "01/01/1970";
     private static String pet_gender = "gender";
-    private static int current_health = Level.getHealth();
+    private static int current_health = 50;
 
     private ThePet() {}
 
-    static public void setName(String name) {
+    public static void setName(String name) {
         ThePet.pet_name = name;
     }
 
-    static public void setBirthday(String birthday) {
+    public static void setBirthday(String birthday) {
         ThePet.pet_birthday = birthday;
     }
 
-    static public void setGender (String gender) {
+    public static void setGender (String gender) {
         ThePet.pet_gender = gender;
     }
 
-    static public String getName() {
+    public static void setPetLevel(XmlResourceParser xrp, int lv) throws IOException, XmlPullParserException {
+        Level.setLevel(xrp, lv);
+    }
+
+    public static String getName() {
         return ThePet.pet_name;
     }
 
-    static public String getBirthday() {
+    public static String getBirthday() {
         return ThePet.pet_birthday;
     }
 
-    static public String getGender() {
+    public static String getGender() {
         return ThePet.pet_gender;
     }
 
-    static public int getCurrentHealth() {
+    public static int getCurrentHealth() {
         return ThePet.current_health;
     }
 
-    static public int getLevelHealth() {
+    public static int getLevelHealth() {
         return Level.getHealth();
     }
+
+    public static int getLevelStamina() {
+        return Level.getStamina();
+    }
+
+    public static int getLevelXP() {
+        return Level.getXP();
+    }
+
 
     private static class Level {
         private static int pet_level;
@@ -62,26 +75,62 @@ public final class ThePet {
             return Level.pet_health;
         }
 
-        static private void setLevel(XmlResourceParser xrp) throws XmlPullParserException, IOException {
+        static private void setLevel(XmlResourceParser xrp, int lv) throws XmlPullParserException, IOException {
             int eventType = xrp.getEventType();
+            boolean done = false;
 
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_DOCUMENT) {
-                    // do something
+            while ((!done) || (eventType != XmlPullParser.END_DOCUMENT)) {
+                if ((eventType == XmlPullParser.START_TAG)
+                        && (xrp.getName().equalsIgnoreCase("name"))) {
+                    eventType = xrp.next();
+
+                    if ((eventType == XmlPullParser.TEXT) &&
+                            (xrp.getText().equalsIgnoreCase(Integer.toString(lv)))) {
+                        Level.pet_level = Integer.parseInt(xrp.getText());
+
+                        while (!done) {
+                            eventType = xrp.next();
+
+                            if ((eventType == XmlPullParser.END_TAG)
+                                    && (xrp.getName().equalsIgnoreCase("level"))) {
+                                done = true;
+                            } else if ((eventType == XmlPullParser.START_TAG) &&
+                                    (xrp.getName().equalsIgnoreCase("health"))) {
+                                eventType = xrp.next();
+
+                                if (eventType == XmlPullParser.TEXT) {
+                                    Level.pet_health = Integer.parseInt(xrp.getText());
+                                }
+                            } else if ((eventType == XmlPullParser.START_TAG) &&
+                                    (xrp.getName().equalsIgnoreCase("stamina"))) {
+                                eventType = xrp.next();
+
+                                if (eventType == XmlPullParser.TEXT) {
+                                    Level.pet_stamina = Integer.parseInt(xrp.getText());
+                                }
+                            } else if ((eventType == XmlPullParser.START_TAG) &&
+                                    (xrp.getName().equalsIgnoreCase("xp"))) {
+                                eventType = xrp.next();
+
+                                if (eventType == XmlPullParser.TEXT) {
+                                    Level.pet_xp = Integer.parseInt(xrp.getText());
+                                }
+                            }
+                        }
+                    }
                 }
-                else if (eventType == XmlPullParser.START_TAG) {
-                    // do something
-                }
-                else if (eventType == XmlPullParser.END_TAG) {
-                    // do something
-                }
-                else if (eventType == XmlPullParser.TEXT) {
-                    // do something
-                }
+
                 eventType = xrp.next();
             }
         }
 
+        private static int getStamina() {
+            return Level.pet_stamina;
+        }
+
+        private static int getXP() {
+            return Level.pet_xp;
+        }
     }
 
 }
