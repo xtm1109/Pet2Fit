@@ -2,7 +2,7 @@
  * Created by Xuan on 3/30/2016.
  */
 
-package com.example.xuan.tictactoe;
+package com.example.xuan.pet2fit;
 
 import android.content.Context;
 import android.graphics.Bitmap;

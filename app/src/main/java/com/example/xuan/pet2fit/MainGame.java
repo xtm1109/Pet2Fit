@@ -1,4 +1,4 @@
-package com.example.xuan.tictactoe;
+package com.example.xuan.pet2fit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 public class MainGame extends Activity {
     MainGameView main_view;

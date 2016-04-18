@@ -1,4 +1,4 @@
-package com.example.xuan.tictactoe;
+package com.example.xuan.pet2fit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

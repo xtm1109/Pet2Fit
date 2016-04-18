@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.xuan.tictactoe">
+    package="com.example.xuan.pet2fit">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.xuan.pet2fit.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,23 +19,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewGame"
+            android:name="com.example.xuan.pet2fit.NewGame"
             android:label="@string/title_activity_new_game"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.example.xuan.pet2fit.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.xuan.tictactoe.MainActivity" />
+                android:value="com.example.xuan.pet2fit.MainActivity" />
         </activity>
         <activity
-            android:name=".PetInfo"
+            android:name="com.example.xuan.pet2fit.PetInfo"
             android:label="@string/title_activity_pet_info"
-            android:parentActivityName=".NewGame">
+            android:parentActivityName="com.example.xuan.pet2fit.NewGame">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.xuan.tictactoe.NewGame" />
+                android:value="com.example.xuan.pet2fit.NewGame" />
         </activity>
         <activity
-            android:name=".MainGame"
+            android:name="com.example.xuan.pet2fit.MainGame"
             android:label="@string/title_activity_main_game"></activity>
     </application>
 

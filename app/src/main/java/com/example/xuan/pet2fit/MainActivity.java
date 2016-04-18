@@ -1,12 +1,7 @@
-package com.example.xuan.tictactoe;
+package com.example.xuan.pet2fit;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.view.View;
 
 
 public class MainActivity extends Activity {
