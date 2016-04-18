@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
+import android.widget.FrameLayout;
 
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.fitness.Fitness;
@@ -34,9 +35,8 @@ public class MainGame extends Activity implements OnDataPointListener,
         super.onCreate(savedInstanceState);
 
         main_view = new MainGameView(this);
-        main_view.setBackgroundColor(Color.WHITE);
 
-        setContentView(main_view);
+        setContentView(R.layout.activity_main_game);
 
         // Check if the app is trying to authorize
         // against the Fitness API

@@ -2,7 +2,9 @@ package com.example.xuan.pet2fit;
 
 import android.content.Context;
 import android.graphics.*;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 
 /**
  * Created by Xuan on 4/11/2016.
@@ -20,6 +22,32 @@ public class MainGameView extends View {
 
     public MainGameView(Context context) {
         super(context);
+        init();
+    }
+
+    public MainGameView(Context context, AttributeSet attrs) {
+        super(context);
+        init();
+    }
+
+    public MainGameView(Context context, AttributeSet attrs, int defStyle) {
+        super(context);
+        init();
+    }
+
+    private void init() {
+        setWillNotDraw(false);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+
+        this.setMeasuredDimension(parentWidth, parentHeight);
+        this.setLayoutParams(new FrameLayout.LayoutParams(parentWidth, parentHeight));
+
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
@@ -34,6 +62,8 @@ public class MainGameView extends View {
 
         // Set text size depends on the screen resolution
         text_size = 13*getResources().getDisplayMetrics().density;
+
+        canvas.drawColor(Color.WHITE);
 
         drawHealthBar(canvas);
         drawStaminaBar(canvas);
