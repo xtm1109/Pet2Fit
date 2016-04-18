@@ -42,17 +42,21 @@ public final class ThePet {
     public static void setCurrentHealth(int h) {
         if (h <= ThePet.getLevelHealth())
             ThePet.current_health = h;
+        else if (h <= 0)
+            ThePet.current_health = 0;
     }
 
     public static void setCurrentStamina(int s) {
         if (s <= ThePet.getLevelStamina())
             ThePet.current_stamina = s;
+        else if (s <= 0)
+            ThePet.current_stamina = 0;
     }
 
     public static void setCurrentXP(int xp) {
-        if (xp <= ThePet.getLevelXP())
-            ThePet.current_xp = xp;
+        ThePet.current_xp = xp;
     }
+
 
     public static String getName() {
         return ThePet.pet_name;
@@ -88,6 +92,10 @@ public final class ThePet {
 
     public static int getLevelXP() {
         return Level.getXP();
+    }
+
+    public static int getCurrentLevel() {
+        return Level.getLevel();
     }
 
 
@@ -156,6 +164,10 @@ public final class ThePet {
 
         private static int getXP() {
             return Level.pet_xp;
+        }
+
+        private static int getLevel() {
+            return Level.pet_level;
         }
     }
 

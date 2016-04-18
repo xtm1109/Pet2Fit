@@ -52,11 +52,9 @@ public class PetInfo extends Activity {
         if (is_checked) {
             switch (view.getId()) {
                 case (R.id.pet_female):
-                    Log.d("gender", "pet is female");
                     gender = "Female";
                     break;
                 case (R.id.pet_male):
-                    Log.d("gender", "pet is male");
                     gender = "Male";
                     break;
             }

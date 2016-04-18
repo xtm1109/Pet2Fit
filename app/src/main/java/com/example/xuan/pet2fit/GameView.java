@@ -40,7 +40,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int frame_count = 10;  // How many frames are there on the sprite sheet?
     private int sprite_width = 600;
     private int sprite_height = 450;
-    private int current_frame = 0; // Start at the first frame - where else?
+    private int current_frame = 0; // Start at the first frame
 
     // A rectangle to define an area of the sprite sheet that represents 1 frame
     private Rect frame_to_draw = new Rect(0, 0, sprite_width, sprite_height);
