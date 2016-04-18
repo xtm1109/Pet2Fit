@@ -6,6 +6,7 @@
     tools:context="com.example.xuan.pet2fit.MainGame">
 
     <com.example.xuan.pet2fit.MainGameView
+        android:id="@+id/top_main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

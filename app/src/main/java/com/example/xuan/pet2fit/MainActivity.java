@@ -1,6 +1,8 @@
 package com.example.xuan.pet2fit;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -44,6 +46,17 @@ public class MainActivity extends Activity implements
     @Override
     protected void onStart() {
         super.onStart();
+        (new AlertDialog.Builder(this))
+                .setMessage("Pet2Fit requires Internet!")
+                .setCancelable(true)
+                .setPositiveButton("Got it!",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                .create()
+                .show();
         mApiClient.connect(); // Connect to Google Play services
     }
 

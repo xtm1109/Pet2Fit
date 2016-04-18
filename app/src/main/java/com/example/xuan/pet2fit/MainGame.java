@@ -1,13 +1,13 @@
 package com.example.xuan.pet2fit;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.widget.FrameLayout;
 
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.fitness.Fitness;
@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 
 public class MainGame extends Activity implements OnDataPointListener,
         GoogleApiClient.ConnectionCallbacks {
-    MainGameView main_view;
     private GoogleApiClient mApiClient = null;
     private static final int REQUEST_OAUTH = 1;
     private static final String AUTH_PENDING = "auth_state_pending";
@@ -33,8 +32,6 @@ public class MainGame extends Activity implements OnDataPointListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        main_view = new MainGameView(this);
 
         setContentView(R.layout.activity_main_game);
 
@@ -169,8 +166,28 @@ public class MainGame extends Activity implements OnDataPointListener,
                     int new_xp = ThePet.getCurrentXP()-ThePet.getLevelXP();
                     XmlResourceParser xrp = this.getResources().getXml(R.xml.levels);
                     try {
-                        ThePet.setPetLevel(xrp, ThePet.getCurrentLevel()+1);
+                        ThePet.setPetLevel(xrp, ThePet.getCurrentLevel() + 1);
                         ThePet.setCurrentXP(new_xp);
+
+                        final AlertDialog.Builder alert_builder = new AlertDialog.Builder(this);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                alert_builder.setMessage("Level Up! Pet is now level "
+                                        + ThePet.getCurrentLevel());
+                                alert_builder.setCancelable(true);
+                                alert_builder.setPositiveButton("Yay!",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                alert_builder.create().show();
+                            }
+                        });
+
+
                     }
                     catch (IOException e) { }
                     catch (XmlPullParserException e) { }
@@ -179,7 +196,8 @@ public class MainGame extends Activity implements OnDataPointListener,
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        main_view.invalidate();
+                        MainGameView top_view = (MainGameView) findViewById(R.id.top_main_view);
+                        top_view.invalidate();
                     }
                 });
             }
