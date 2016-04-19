@@ -46,8 +46,8 @@ public class MainGameView extends View {
         int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
         int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-        this.setMeasuredDimension(parentWidth, parentHeight);
-        this.setLayoutParams(new FrameLayout.LayoutParams(parentWidth, parentHeight));
+        this.setMeasuredDimension(parentWidth, parentHeight/3);
+        this.setLayoutParams(new FrameLayout.LayoutParams(parentWidth, parentHeight/3));
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -57,10 +57,10 @@ public class MainGameView extends View {
         super.onDraw(canvas);
 
         margin_x = getWidth() / 20;
-        margin_y = getHeight() / 60;
+        margin_y = getHeight() / 15;
 
         bar_width = (getWidth() - (margin_x * 2)) / 3;
-        bar_height = (getHeight() - (margin_y * 2)) / 27;
+        bar_height = (getHeight() - (margin_y * 2)) / 8;
 
         // Set text size depends on the screen resolution
         text_size = 13 * getResources().getDisplayMetrics().density;

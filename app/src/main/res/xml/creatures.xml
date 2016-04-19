@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creatures>
+	<creature>
+        <name>Creature 1</name>
+		<health>100</health>
+		<attack>5</attack>
+		<level>1</level>
+	</creature>
+	<creature>
+        <name>Creature 2</name>
+		<health>150</health>
+		<attack>10</attack>
+		<level>2</level>
+	</creature>
+	<creature>
+        <name>Creature 3</name>
+		<health>200</health>
+		<attack>15</attack>
+		<level>3</level>
+	</creature>
+	<creature>
+        <name>Creature 4</name>
+		<health>250</health>
+		<attack>20</attack>
+		<level>4</level>
+	</creature>
+	<creature>
+        <name>Creature 5</name>
+		<health>300</health>
+		<attack>25</attack>
+		<level>5</level>
+	</creature>
+	<creature>
+        <name>Creature 6</name>
+		<health>350</health>
+		<attack>30</attack>
+		<level>6</level>
+	</creature>
+	<creature>
+        <name>Creature 7</name>
+		<health>400</health>
+		<attack>35</attack>
+		<level>7</level>
+	</creature>
+	<creature>
+        <name>Creature 8</name>
+		<health>450</health>
+		<attack>40</attack>
+		<level>8</level>
+	</creature>
+	<creature>
+        <name>Creature 9</name>
+		<health>500</health>
+		<attack>45</attack>
+		<level>9</level>
+	</creature>
+</creatures>
