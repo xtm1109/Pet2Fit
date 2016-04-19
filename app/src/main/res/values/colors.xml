@@ -2,5 +2,5 @@
 <resources>
     <color name="field_color">#B5CEE0</color>
     <color name="border_color">#7F7F7F</color>
-    <color name="background_color">#90C3D4</color>
+    <color name="background_color">#FFFFFF</color>
 </resources>

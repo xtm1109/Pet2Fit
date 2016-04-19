@@ -19,7 +19,6 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root_view = inflater.inflate(R.layout.fragment_main, container, false);
 
-
         /* ~~~ Handle all buttons ~~~ */
 
         /* ~~~ Handle new_button ~~~ */

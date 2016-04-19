@@ -1,7 +1,7 @@
 package com.example.xuan.pet2fit;
 
 /**
- * Created by Xuan on 4/18/2016.
+ * Created by Xuan on 3/18/2016.
  */
 public class AICreature {
     private String name;

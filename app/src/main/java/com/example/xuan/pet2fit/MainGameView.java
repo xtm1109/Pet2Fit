@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.FrameLayout;
 
 /**
- * Created by Xuan on 4/11/2016.
+ * Created by Xuan on 2/11/2016.
  */
 public class MainGameView extends View {
     Paint paint = new Paint();
@@ -39,17 +38,6 @@ public class MainGameView extends View {
 
     private void init() {
         setWillNotDraw(false);
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
-        int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
-
-        this.setMeasuredDimension(parentWidth, parentHeight/3);
-        this.setLayoutParams(new FrameLayout.LayoutParams(parentWidth, parentHeight/3));
-
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override

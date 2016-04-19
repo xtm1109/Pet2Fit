@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.sql.SQLException;
 
 /**
- * Created by Xuan on 4/18/2016.
+ * Created by Xuan on 3/18/2016.
  */
 public class CreaturesDAO {
     private SQLiteDatabase database;

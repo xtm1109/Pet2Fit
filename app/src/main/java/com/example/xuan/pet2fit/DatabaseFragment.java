@@ -1,17 +1,10 @@
 package com.example.xuan.pet2fit;
 
-import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.

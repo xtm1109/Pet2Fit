@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Xuan on 4/18/2016.
+ * Created by Xuan on 3/18/2016.
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_CREATURES = "creatures";

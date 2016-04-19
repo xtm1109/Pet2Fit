@@ -8,7 +8,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 /**
- * Created by Xuan on 4/13/2016.
+ * Created by Xuan on 3/13/2016.
  */
 public final class ThePet {
     private static String pet_name = "name";

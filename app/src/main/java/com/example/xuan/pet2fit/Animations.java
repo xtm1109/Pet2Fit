@@ -14,7 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /**
- * Created by Xuan on 3/30/2016.
+ * Created by Xuan on 2/30/2016.
  */
 public class Animations extends SurfaceView implements Runnable {
     Thread game_thread = null;
@@ -137,8 +137,8 @@ public class Animations extends SurfaceView implements Runnable {
         }
         // Make sure our drawing surface is valid or we crash
         if (the_holder.getSurface().isValid()) {
-            x_position = (float) (this.getWidth()/2.0 - frame_to_draw.width()/2.0);
-            y_position = (float) (this.getHeight()/4.0 - frame_to_draw.height()/2.0);
+            x_position = (float) ((this.getWidth()-frame_to_draw.width())/2.0);
+            y_position = (float) ((this.getHeight()-frame_to_draw.height())/2.0);
 
             where_to_draw.set((int) x_position,
                     (int) y_position,
