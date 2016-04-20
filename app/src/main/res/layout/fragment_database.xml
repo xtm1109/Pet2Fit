@@ -9,7 +9,16 @@
         android:id="@+id/fight_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fight!"
-        android:layout_gravity="left|bottom" />
+        android:text="Training!"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:id="@+id/battle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Battle!"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.xuan.pet2fit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,6 +30,17 @@ public class DatabaseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getCreature();
+            }
+        });
+
+        View battle_button = root_view.findViewById(R.id.battle_button);
+
+        // When user clicks on the button
+        battle_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BattleLAN.class);
+                startActivity(intent);
             }
         });
 

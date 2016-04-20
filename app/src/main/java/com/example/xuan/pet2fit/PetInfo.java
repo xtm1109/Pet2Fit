@@ -90,7 +90,6 @@ public class PetInfo extends Activity {
         int a = 0;
         int lv = 0;
 
-        System.out.println("about to drop table");
         data_source.dropTableAndRecreate();
 
         try {
