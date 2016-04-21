@@ -26,6 +26,9 @@ public class PetInfo extends Activity {
     XmlResourceParser xrp;
     CreaturesDAO data_source;
 
+    Intent prev_intent;
+    int pet_choice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,9 @@ public class PetInfo extends Activity {
 
         data_source = new CreaturesDAO(this);
         data_source.open();
+
+        prev_intent = getIntent();
+        pet_choice = prev_intent.getIntExtra("pet_option", 1);
     }
 
     @Override
@@ -178,6 +184,7 @@ public class PetInfo extends Activity {
         loadCreatureToDb();
 
         Intent intent = new Intent (this, MainGame.class);
+        intent.putExtra("pet_choice", pet_choice); // pass on what pet user chose
         startActivity(intent);
     }
 }

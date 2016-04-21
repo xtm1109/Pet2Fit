@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
@@ -41,6 +43,7 @@ public class MainActivity extends Activity implements
                 // Adds a listener to register to receive connection failed events
                 .addOnConnectionFailedListener(this)
                 .build(); // Build an GoogleAPIClient to communicate with Google APIs
+
     }
 
     @Override

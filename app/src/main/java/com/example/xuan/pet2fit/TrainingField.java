@@ -23,6 +23,7 @@ public class TrainingField extends Activity implements SensorEventListener{
     private long mLastTime;
     private boolean mUp;
     private int mJumpCounter;
+    private int strengthGained;
     private SensorManager mSensorManager;
     private Sensor mSensor;
 
@@ -35,6 +36,7 @@ public class TrainingField extends Activity implements SensorEventListener{
         mLastTime = 0;
         mUp = false;
         mJumpCounter = 0;
+        strengthGained = 0;
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
@@ -94,8 +96,15 @@ public class TrainingField extends Activity implements SensorEventListener{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                if (mJumpCounter == 5) { // 25 JJs for 1 Strength
+                    strengthGained++;
+                    TextView strength = (TextView) findViewById(R.id.strength_counter);
+                    strength.setText(Integer.toString(strengthGained));
+                    mJumpCounter = 0;
+                }
                 TextView counter = (TextView) findViewById(R.id.jumping_jack_counter);
                 counter.setText(Integer.toString(mJumpCounter));
+
             }
         });
     }

@@ -5,16 +5,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.xuan.pet2fit.NewGame">
 
-    <com.example.xuan.pet2fit.GameView
+    <fragment
+        android:id="@+id/pet_options_frag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        class="com.example.xuan.pet2fit.PetOptionsFragment" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="OK"
+        android:text="I'm Ready!!"
         android:onClick="createInfo"/>
 
 </RelativeLayout>

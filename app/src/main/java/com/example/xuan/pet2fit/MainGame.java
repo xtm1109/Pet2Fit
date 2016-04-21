@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 public class MainGame extends Activity implements OnDataPointListener,
         GoogleApiClient.ConnectionCallbacks {
     private GoogleApiClient mApiClient = null;
-    private static final int REQUEST_OAUTH = 1;
     private static final String AUTH_PENDING = "auth_state_pending";
     private boolean authInProgress = false;
     private int step_count;
@@ -73,6 +72,7 @@ public class MainGame extends Activity implements OnDataPointListener,
 
         // Calculate new pet's health
         long been_away = ((currentTime - lastTime)/1000); // to seconds
+        been_away = been_away/5; // decrease 1 HP every 5 seconds
         ThePet.setCurrentHealth(ThePet.getCurrentHealth() - (int) been_away);
     }
 
@@ -127,7 +127,7 @@ public class MainGame extends Activity implements OnDataPointListener,
 
         sensor_builder.setDataSource(dataSource); // Specify the data source of the request
         sensor_builder.setDataType(dataType); // Specify data type of the request
-        sensor_builder.setSamplingRate(10, TimeUnit.SECONDS);  // Period between requests
+        sensor_builder.setSamplingRate(5, TimeUnit.SECONDS);  // Period between requests
 
         request = sensor_builder.build(); // Construct the request
 

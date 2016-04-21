@@ -1,5 +1,7 @@
 package com.example.xuan.pet2fit;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -27,7 +29,51 @@ public class DatabaseFragment extends Fragment {
         fight_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCreature();
+                final AICreature creature = getCreature();
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(getActivity());
+                builder.setTitle("Creature Information");
+                builder.setMessage("Creature Name: " + creature.getName() + "\n" +
+                        "Creature Level: " + creature.getLevel() + "\n" +
+                        "Creature Strength: " + creature.getAttack());
+                builder.setCancelable(false);
+                builder.setPositiveButton("Begin Fight!",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                double user_turn = Math.random();
+                                double ai_turn = Math.random();
+                                int xp_gain;
+
+                                AlertDialog.Builder builder =
+                                        new AlertDialog.Builder(getActivity());
+
+                                if (user_turn >= ai_turn) {
+                                    xp_gain = creature.getHealth()/10; // no logic, can be anything
+                                    builder.setTitle("You won!");
+                                    builder.setMessage("You have gained " + xp_gain + " XP!");
+                                }
+                                else {
+                                    xp_gain = 0 - creature.getHealth()/10;
+                                    builder.setTitle("You lost....");
+                                    builder.setMessage("You have lost " + xp_gain + " XP...");
+                                }
+                                ThePet.setCurrentXP(ThePet.getCurrentXP() + xp_gain);
+                                builder.setCancelable(false);
+                                builder.setPositiveButton("Alrighty!",
+                                        new DialogInterface.OnClickListener() {
+                                            // Update XP Bar with newly-gained XP
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                MainGameView top = (MainGameView) getActivity().findViewById(R.id.top_main_view);
+                                                top.invalidate();
+                                            }
+                                        });
+                                builder.show();
+                            }
+                        });
+                builder.show();
             }
         });
 
@@ -72,8 +118,7 @@ public class DatabaseFragment extends Fragment {
         super.onPause();
     }
 
-    private void getCreature() {
-        AICreature creature = data_source.getCreatureWithSpecificLevel(ThePet.getCurrentLevel());
-        System.out.println(creature.toString());
+    private AICreature getCreature() {
+        return (data_source.getCreatureWithSpecificLevel(ThePet.getCurrentLevel()));
     }
 }

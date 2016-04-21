@@ -9,22 +9,11 @@ import android.preference.PreferenceManager;
 import android.view.View;
 
 public class NewGame extends Activity {
-    GameView game_view;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        game_view = new GameView(this);
 
         setContentView(R.layout.activity_new_game);
-
-        /*
-         * Clear all values in SharedPreferences when user starts a new game
-         */
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.commit();
     }
 
     // This method executes when the player starts the game
@@ -32,7 +21,6 @@ public class NewGame extends Activity {
     protected void onResume() {
         super.onResume();
 
-        game_view.resume(); // Tell the gameView resume method to execute
     }
 
     // This method executes when the player quits the game
@@ -40,7 +28,6 @@ public class NewGame extends Activity {
     protected void onPause() {
         super.onPause();
 
-        game_view.pause(); // Tell the gameView pause method to execute
     }
 
     public void createInfo(View view) {
@@ -51,6 +38,8 @@ public class NewGame extends Activity {
 
         // Start a new game
         Intent intent = new Intent(this, PetInfo.class);
+        PetOptionsFragment fr = (PetOptionsFragment) getFragmentManager().findFragmentById(R.id.pet_options_frag);
+        intent.putExtra("pet_option", fr.current_choice);
         startActivity(intent);
     }
 }

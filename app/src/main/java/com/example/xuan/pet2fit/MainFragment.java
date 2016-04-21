@@ -28,6 +28,14 @@ public class MainFragment extends Fragment {
         new_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
+                * Clear all values in SharedPreferences when user starts a new game
+                */
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+
                 Intent intent = new Intent(getActivity(), NewGame.class);
                 startActivity(intent);
             }
@@ -77,7 +85,10 @@ public class MainFragment extends Fragment {
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(getActivity());
                 builder.setTitle(R.string.about_title);
-                builder.setMessage(R.string.about_title);
+                builder.setMessage("Pet2Fit\nThis is a simulation LAN game " +
+                        "that functions based on user fitness activity.\n\n" +
+                        "Credits: All the sprites are belonged to\n" +
+                        "Heroes Might of Magic game series.");
                 builder.setCancelable(false);
                 builder.setPositiveButton(R.string.ok_label,
                         new DialogInterface.OnClickListener() {

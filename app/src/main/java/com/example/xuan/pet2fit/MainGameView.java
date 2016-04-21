@@ -19,8 +19,6 @@ public class MainGameView extends View {
 
     float text_size;
 
-    boolean is_running;
-
     public MainGameView(Context context) {
         super(context);
         init();

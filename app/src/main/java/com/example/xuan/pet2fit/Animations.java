@@ -1,5 +1,6 @@
 package com.example.xuan.pet2fit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -36,18 +38,18 @@ public class Animations extends SurfaceView implements Runnable {
     long frame_ticker = 0l;
 
     // New variables for spritesheet
-    private int frame_count = 13;  // Total frame in the sprite sheet
-    private int sprite_width = 360; // original size x 3
-    private int sprite_height = 360;
-    private int sprite_sheet = R.drawable.b_spritesheet;
+    private int frame_count = 11;  // Total frame in the sprite sheet
+    private int sprite_width = 200; // this is the size of each frame
+    private int sprite_height = 150;
+    private int sprite_sheet;
     private int background_color = Color.argb(255, 255, 255, 255);
     private int current_frame = 0; // Start at the first frame
 
     // A rectangle to define an area of the sprite sheet that represents 1 frame
-    private Rect frame_to_draw = new Rect(0, 0, sprite_width, sprite_height);
+    private Rect frame_to_draw;
 
     // A rect that defines an area of the screen on which to draw
-    RectF where_to_draw = new RectF(x_position, 0, x_position + sprite_width, sprite_height);
+    RectF where_to_draw;
 
     // Constructor methods
     public Animations(Context context) {
@@ -66,6 +68,25 @@ public class Animations extends SurfaceView implements Runnable {
     }
 
     private void init(Context context) {
+        Bundle transporter = ((Activity)getContext()).getIntent().getExtras();
+        sprite_sheet = setSpritesheet(transporter.getInt("pet_choice"));
+
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inScaled = false;
+
+        // Load dragon from .png file
+        dragon = BitmapFactory.decodeResource(this.getResources(), sprite_sheet);
+        Bitmap o_dragon = BitmapFactory.decodeResource(this.getResources(),
+                sprite_sheet, opts);
+        sprite_width = (sprite_width * dragon.getWidth() / o_dragon.getWidth());
+        sprite_height = (sprite_height * dragon.getHeight() / o_dragon.getHeight());
+
+        frame_to_draw = new Rect(0, 0, sprite_width, sprite_height);
+        where_to_draw = new RectF(x_position, 0, x_position + sprite_width, sprite_height);
+
+        // Initialize Paint object
+        paint = new Paint();
+
         // Initialize ourHolder and paint objects
         the_holder = getHolder();
         the_holder.addCallback(new SurfaceHolder.Callback() {
@@ -84,11 +105,6 @@ public class Animations extends SurfaceView implements Runnable {
 
             }
         });
-
-        paint = new Paint();
-
-        // Load dragon from .png file
-        dragon = BitmapFactory.decodeResource(this.getResources(), sprite_sheet);
     }
 
     @Override
@@ -132,7 +148,6 @@ public class Animations extends SurfaceView implements Runnable {
     // Draw the newly updated scene
     public void draw() {
         if (!is_running) {
-//            Log.d("test", "before surface");
             return;
         }
         // Make sure our drawing surface is valid or we crash
@@ -177,5 +192,21 @@ public class Animations extends SurfaceView implements Runnable {
         is_running = true;
         game_thread = new Thread(this);
         game_thread.start();
+    }
+
+    private int setSpritesheet(int pet_choice) {
+        switch (pet_choice) {
+            case 2:
+                return R.drawable.bkd_spritesheet;
+            case 3:
+                return R.drawable.gd_spritesheet;
+            case 4:
+                return R.drawable.grd_spritesheet;
+            case 5:
+                return R.drawable.rd_spritesheet;
+            default:
+                return R.drawable.bd_spritesheet;
+        }
+
     }
 }
