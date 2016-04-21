@@ -10,13 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.xuan.pet2fit.BattleLAN">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Peer"
-        android:id="@+id/find_peer_btn"
+        android:text="Battle Log"
+        android:id="@+id/battle_log_title"
         android:layout_gravity="center|top"
-        android:onClick="findPeer" />
+        android:textSize="20dp" />
 
     <fragment
         class="com.example.xuan.pet2fit.BattleTurnFragment"

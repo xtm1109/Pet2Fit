@@ -107,7 +107,7 @@ public class BattleTurnFragment extends Fragment implements WifiP2pManager.Conne
             port = 4444;
 
             int health = ThePet.getCurrentHealth();
-            int attack = 5;
+            int attack = ThePet.getCurrentStrength();
             boolean done = false;
             String log = "";
 

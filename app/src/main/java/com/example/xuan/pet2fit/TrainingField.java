@@ -1,12 +1,14 @@
 package com.example.xuan.pet2fit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
 import android.widget.TextView;
 
 public class TrainingField extends Activity implements SensorEventListener{
@@ -96,7 +98,7 @@ public class TrainingField extends Activity implements SensorEventListener{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (mJumpCounter == 5) { // 25 JJs for 1 Strength
+                if (mJumpCounter == 5) { // 5 JJs for 1 Strength
                     strengthGained++;
                     TextView strength = (TextView) findViewById(R.id.strength_counter);
                     strength.setText(Integer.toString(strengthGained));
@@ -107,5 +109,12 @@ public class TrainingField extends Activity implements SensorEventListener{
 
             }
         });
+    }
+
+    public void updateStrength(View view) {
+        ThePet.setCurrentStrength(ThePet.getCurrentStrength() + strengthGained);
+        System.out.println(ThePet.getCurrentStrength());
+        Intent intent = new Intent(this, MainGame.class);
+        startActivity(intent);
     }
 }

@@ -5,53 +5,62 @@
 		<health>100</health>
 		<stamina>50</stamina>
 		<xp>15</xp>
+		<strength>7</strength>
 	</level>
 	<level>
         <name>2</name>
 		<health>150</health>
 		<stamina>100</stamina>
 		<xp>1600</xp>
+		<strength>10</strength>
 	</level>
 	<level>
         <name>3</name>
 		<health>200</health>
 		<stamina>150</stamina>
 		<xp>2000</xp>
+		<strength>12</strength>
 	</level>
 	<level>
         <name>4</name>
 		<health>250</health>
 		<stamina>200</stamina>
 		<xp>2500</xp>
+		<strength>15</strength>
 	</level>
 	<level>
         <name>5</name>
 		<health>300</health>
 		<stamina>250</stamina>
 		<xp>3000</xp>
+		<strength>19</strength>
 	</level>
 	<level>
         <name>6</name>
 		<health>350</health>
 		<stamina>300</stamina>
 		<xp>3500</xp>
+		<strength>22</strength>
 	</level>
 	<level>
         <name>7</name>
 		<health>400</health>
 		<stamina>350</stamina>
 		<xp>3600</xp>
+		<strength>26</strength>
 	</level>
 	<level>
         <name>8</name>
 		<health>450</health>
 		<stamina>400</stamina>
 		<xp>4200</xp>
+		<strength>31</strength>
 	</level>
 	<level>
         <name>9</name>
 		<health>500</health>
 		<stamina>450</stamina>
 		<xp>4800</xp>
+		<strength>37</strength>
 	</level>
 </levels>

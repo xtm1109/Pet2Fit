@@ -184,7 +184,7 @@ public class PetInfo extends Activity {
         loadCreatureToDb();
 
         Intent intent = new Intent (this, MainGame.class);
-        intent.putExtra("pet_choice", pet_choice); // pass on what pet user chose
+        intent.putExtra("pet_choice", pet_choice); // pass on what pet
         startActivity(intent);
     }
 }

@@ -46,4 +46,14 @@
         android:text=""
         android:textSize="50dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/consume_strength"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:text="Receive extra strength!!"
+        android:textSize="20dp"
+        android:onClick="updateStrength"/>
+
 </LinearLayout>

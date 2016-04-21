@@ -29,7 +29,7 @@ public class DataTransferService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         int health = ThePet.getCurrentHealth();
-        int attack = 5;
+        int attack = ThePet.getCurrentStrength();
 
         Socket socket = null;
         PrintWriter out = null;

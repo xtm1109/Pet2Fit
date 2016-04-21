@@ -2,6 +2,7 @@ package com.example.xuan.pet2fit;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -68,8 +70,14 @@ public class Animations extends SurfaceView implements Runnable {
     }
 
     private void init(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+
         Bundle transporter = ((Activity)getContext()).getIntent().getExtras();
-        sprite_sheet = setSpritesheet(transporter.getInt("pet_choice"));
+
+        if (transporter != null) {
+            prefs.edit().putInt("pet_choice", transporter.getInt("pet_choice")).commit();
+        }
+        sprite_sheet = setSpritesheet(prefs.getInt("pet_choice", 1));
 
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inScaled = false;

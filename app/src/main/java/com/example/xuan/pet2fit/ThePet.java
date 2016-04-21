@@ -14,9 +14,10 @@ public final class ThePet {
     private static String pet_name = "name";
     private static String pet_birthday = "01/01/1970";
     private static String pet_gender = "gender";
-    private static int current_health;
-    private static int current_stamina;
-    private static int current_xp;
+    private static int current_health = 1;
+    private static int current_stamina = 1;
+    private static int current_xp = 0;
+    private static int current_strength = 0;
 
     private ThePet() {}
 
@@ -37,6 +38,7 @@ public final class ThePet {
         ThePet.setCurrentHealth(ThePet.getLevelHealth());
         ThePet.setCurrentStamina(ThePet.getLevelStamina());
         ThePet.setCurrentXP(0);
+        ThePet.setCurrentStrength(ThePet.getLevelStrength());
     }
 
     public static void setCurrentHealth(int h) {
@@ -57,6 +59,10 @@ public final class ThePet {
         ThePet.current_xp = xp;
     }
 
+    public static void setCurrentStrength(int s) {
+        ThePet.current_strength = s;
+    }
+
 
     public static String getName() {
         return ThePet.pet_name;
@@ -68,18 +74,6 @@ public final class ThePet {
 
     public static String getGender() {
         return ThePet.pet_gender;
-    }
-
-    public static int getCurrentHealth() {
-        return ThePet.current_health;
-    }
-
-    public static int getCurrentStamina() {
-        return ThePet.current_stamina;
-    }
-
-    public static int getCurrentXP() {
-        return ThePet.current_xp;
     }
 
     public static int getLevelHealth() {
@@ -94,16 +88,37 @@ public final class ThePet {
         return Level.getXP();
     }
 
+    public static int getLevelStrength() {
+        return Level.getStrength();
+    }
+
+    public static int getCurrentHealth() {
+        return ThePet.current_health;
+    }
+
+    public static int getCurrentStamina() {
+        return ThePet.current_stamina;
+    }
+
+    public static int getCurrentXP() {
+        return ThePet.current_xp;
+    }
+
     public static int getCurrentLevel() {
         return Level.getLevel();
     }
 
+    public static int getCurrentStrength() {
+        return ThePet.current_strength;
+    }
+
 
     private static class Level {
-        private static int pet_level;
-        private static int pet_health;
-        private static int pet_stamina;
-        private static int pet_xp;
+        private static int pet_level = 1;
+        private static int pet_health = 1;
+        private static int pet_stamina = 1;
+        private static int pet_xp = 0;
+        private static int pet_strength = 0;
 
         static private void setLevel(XmlResourceParser xrp, int lv) throws XmlPullParserException, IOException {
             int eventType = xrp.getEventType();
@@ -145,6 +160,13 @@ public final class ThePet {
                                 if (eventType == XmlPullParser.TEXT) {
                                     Level.pet_xp = Integer.parseInt(xrp.getText());
                                 }
+                            } else if ((eventType == XmlPullParser.START_TAG) &&
+                                    (xrp.getName().equalsIgnoreCase("strength"))) {
+                                eventType = xrp.next();
+
+                                if (eventType == XmlPullParser.TEXT) {
+                                    Level.pet_strength = Integer.parseInt(xrp.getText());
+                                }
                             }
                         }
                     }
@@ -168,6 +190,10 @@ public final class ThePet {
 
         private static int getLevel() {
             return Level.pet_level;
+        }
+
+        private static int getStrength() {
+            return Level.pet_strength;
         }
     }
 
