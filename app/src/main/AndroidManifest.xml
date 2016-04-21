@@ -57,6 +57,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xuan.pet2fit.MainGame" />
         </activity>
-    </application>
 
+        <!-- Used for communicating after a successful connection -->
+        <service android:enabled="true" android:name="com.example.xuan.pet2fit.DataTransferService" />
+    </application>
 </manifest>

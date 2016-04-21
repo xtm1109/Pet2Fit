@@ -9,16 +9,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 
-public class BattleLAN extends Activity implements WifiP2pManager.ConnectionInfoListener{
+public class BattleLAN extends Activity{
     WifiP2pManager mManager;
     WifiP2pManager.Channel mChannel;
     BroadcastReceiver mReceiver;
 
-    WifiP2pInfo mInfo;
-
     IntentFilter mIntentFilter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +65,4 @@ public class BattleLAN extends Activity implements WifiP2pManager.ConnectionInfo
     }
 
 
-    @Override
-    public void onConnectionInfoAvailable(WifiP2pInfo info) {
-        this.mInfo = info;
-
-        // After the group negotiation, we assign the group owner as the file
-        // server. The file server is single threaded, single connection server
-        // socket.
-        if (info.groupFormed && info.isGroupOwner) {
-            System.out.println("I am server");
-        } else if (info.groupFormed) {
-            System.out.println("I am not server. I am client");
-        }
-
-    }
 }

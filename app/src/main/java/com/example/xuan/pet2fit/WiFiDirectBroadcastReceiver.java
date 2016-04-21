@@ -44,7 +44,6 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
             System.out.println("Total peers " + peers.size());
             for (int i = 0; i < peers.size(); i++) {
-                System.out.println(i + " peers \n" + peers.get(i));
                 connectToPeer((WifiP2pDevice)peers.get(i));
             }
 
@@ -70,13 +69,13 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             // asynchronous call and the calling activity is notified with a
             // callback on PeerListListener.onPeersAvailable()
             if (mManager != null) {
+                System.out.println("P2P peers changed - request peer");
                 mManager.requestPeers(mChannel, peerListListener);
             }
-            System.out.println("P2P peers changed");
+
 
         } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
             // Respond to new connection or disconnections
-
             if (mManager == null) {
                 return;
             }
@@ -87,7 +86,10 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
             if (networkInfo.isConnected()) {
                 // We are connected with the other device, request connection
                 // info to find group owner IP
-                mManager.requestConnectionInfo(mChannel, mActivity);
+                System.out.println("about to request info");
+                BattleTurnFragment fragment = (BattleTurnFragment) mActivity
+                        .getFragmentManager().findFragmentById(R.id.battle_turn_frag); //this fragment will be in BattleLan xml
+                mManager.requestConnectionInfo(mChannel, fragment);
             }
         } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
             // Respond to this device's wifi state changing
