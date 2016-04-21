@@ -9,16 +9,24 @@
         android:id="@+id/fight_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Training!"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="Fight!" />
+
+    <Button
+        android:id="@+id/training_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Training!"/>
 
     <Button
         android:id="@+id/battle_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Battle!"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:text="Battle!"/>
 
 </RelativeLayout>

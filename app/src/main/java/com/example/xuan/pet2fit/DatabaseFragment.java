@@ -24,8 +24,6 @@ public class DatabaseFragment extends Fragment {
         View root_view = inflater.inflate(R.layout.fragment_database, container, false);
 
         View fight_button = root_view.findViewById(R.id.fight_button);
-
-        // When user clicks on the button
         fight_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,12 +32,19 @@ public class DatabaseFragment extends Fragment {
         });
 
         View battle_button = root_view.findViewById(R.id.battle_button);
-
-        // When user clicks on the button
         battle_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BattleLAN.class);
+                startActivity(intent);
+            }
+        });
+
+        View training_button = root_view.findViewById(R.id.training_button);
+        training_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), TrainingField.class);
                 startActivity(intent);
             }
         });

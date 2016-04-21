@@ -15,7 +15,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * Created by Xuan on 4/19/2016.
+ * Created by Xuan on 4/5/2016.
  */
 public class DataTransferService extends IntentService {
     public DataTransferService() {

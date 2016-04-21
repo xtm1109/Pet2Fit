@@ -1,5 +1,6 @@
 package com.example.xuan.pet2fit;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +17,14 @@ public class NewGame extends Activity {
         game_view = new GameView(this);
 
         setContentView(R.layout.activity_new_game);
+
+        /*
+         * Clear all values in SharedPreferences when user starts a new game
+         */
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
     }
 
     // This method executes when the player starts the game

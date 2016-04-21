@@ -59,6 +59,13 @@
         </activity>
 
         <!-- Used for communicating after a successful connection -->
-        <service android:enabled="true" android:name="com.example.xuan.pet2fit.DataTransferService" />
+        <service
+            android:name=".DataTransferService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".TrainingField"
+            android:label="@string/title_activity_training_field"></activity>
     </application>
+
 </manifest>
