@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Display;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
@@ -26,6 +26,12 @@ public class MainActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Get a font for the app title
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/vintage.ttf");
+        TextView title = (TextView) findViewById(R.id.app_title);
+        title.setTypeface(tf);
 
         // Check if the app is trying to authorize
         // against the Fitness API

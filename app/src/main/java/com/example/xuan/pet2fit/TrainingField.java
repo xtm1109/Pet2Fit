@@ -98,7 +98,7 @@ public class TrainingField extends Activity implements SensorEventListener{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (mJumpCounter == 5) { // 5 JJs for 1 Strength
+                if (mJumpCounter == 3) { // 3 JJs for 1 Strength
                     strengthGained++;
                     TextView strength = (TextView) findViewById(R.id.strength_counter);
                     strength.setText(Integer.toString(strengthGained));
@@ -109,6 +109,27 @@ public class TrainingField extends Activity implements SensorEventListener{
 
             }
         });
+
+        /*
+         * Each Strength will take 20 Stamina away
+         * from the pet. Calculate whether the pet
+         * has enough Stamina to perform more JJ here.
+         */
+        if ((strengthGained*20) >= ThePet.getCurrentStamina()-20) {
+            // Not enough Stamina for more, update text to show this
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    TextView warning = (TextView) findViewById(R.id.jumping_jack_title);
+                    warning.setText(ThePet.getName() + " is exhausted...\n" +
+                            "Cannot do anything now...");
+                    TextView counter = (TextView) findViewById(R.id.jumping_jack_counter);
+                    counter.setText("-");
+                }
+            });
+
+        }
+
     }
 
     public void updateStrength(View view) {
