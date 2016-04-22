@@ -35,6 +35,8 @@ public class DataTransferService extends IntentService {
         PrintWriter out = null;
         BufferedReader in = null;
 
+        boolean won = false;
+
         String host_name = intent.getExtras().getString("host");
         int port_number = intent.getExtras().getInt("port");
         String message = intent.getExtras().getString("message");
@@ -63,6 +65,7 @@ public class DataTransferService extends IntentService {
                         done = true;
                         System.out.println("I am client, server died and I won!");
                         log = log + "Enemy died. Hooray! I won!\n";
+                        won = true;
                         break;
                     }
 
@@ -73,6 +76,7 @@ public class DataTransferService extends IntentService {
                         out.println(attack);
                         System.out.println("I am client and I died");
                         log = log + "I died... Sadly enemy won.\n";
+                        won = false;
                         break;
                     }
                     out.println(attack);
@@ -94,6 +98,17 @@ public class DataTransferService extends IntentService {
                         socket.close();
                 } catch (IOException e) {}
             }
+        }
+
+        if (won) { // user won the battle
+            ThePet.setCurrentStamina(ThePet.getCurrentStamina()+20); //arbitrary value
+            log = log + "\n\n\n" + "I gained 20 Stamina!!\n";
+            System.out.println(ThePet.getCurrentStamina());
+        }
+        else { // user lost the battle
+            ThePet.setCurrentStamina(ThePet.getCurrentStamina()-20);
+            log = log + "\n\n\n" + "I lost 20 Stamina!!\n";
+            System.out.println(ThePet.getCurrentStamina());
         }
 
         Bundle bundle = intent.getExtras();

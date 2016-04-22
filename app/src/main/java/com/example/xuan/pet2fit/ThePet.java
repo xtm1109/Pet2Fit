@@ -49,10 +49,13 @@ public final class ThePet {
     }
 
     public static void setCurrentStamina(int s) {
-        if (s <= ThePet.getLevelStamina())
-            ThePet.current_stamina = s;
-        else if (s <= 0)
+        if (s <= 0)
             ThePet.current_stamina = 0;
+        else if (s <= ThePet.getLevelStamina())
+            ThePet.current_stamina = s;
+        else {
+            ThePet.current_stamina = ThePet.getLevelStamina();
+        }
     }
 
     public static void setCurrentXP(int xp) {

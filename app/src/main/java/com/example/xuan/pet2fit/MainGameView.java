@@ -143,6 +143,8 @@ public class MainGameView extends View {
         canvas.drawRect(s_bar.left, s_bar.top,
                 s_bar.left + ((ThePet.getCurrentStamina() * bar_width) / ThePet.getLevelStamina()),
                 s_bar.bottom, paint);
+
+        System.out.println("draw stamina with currentStamina " + ThePet.getCurrentStamina());
         /* ~~~ DONE ~~~ */
 
         /* ~~~ Draw text ~~~ */

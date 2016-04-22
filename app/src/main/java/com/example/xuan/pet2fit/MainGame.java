@@ -65,6 +65,9 @@ public class MainGame extends Activity implements OnDataPointListener,
     protected void onResume() {
         super.onResume();
 
+        MainGameView top_view = (MainGameView) findViewById(R.id.top_main_view);
+        top_view.invalidate();
+
         // Timestamp when the app is re-opened
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         long currentTime = System.currentTimeMillis();

@@ -31,6 +31,7 @@ public class BattleTurnFragment extends Fragment implements WifiP2pManager.Conne
     WifiP2pInfo mInfo;
     View root_view;
     Handler handler;
+    boolean won = false;
 
     public BattleTurnFragment() {
         // Required empty public constructor
@@ -139,6 +140,7 @@ public class BattleTurnFragment extends Fragment implements WifiP2pManager.Conne
                             done = true;
                             System.out.println("I am server, client died and I won");
                             log = log + "Enemy died. Hooray! I won!\n";
+                            won = true;
                             break;
                         }
 
@@ -149,6 +151,7 @@ public class BattleTurnFragment extends Fragment implements WifiP2pManager.Conne
                             out.println(attack);
                             System.out.println("I am server and I died.");
                             log = log + "I died... Sadly enemy won.\n";
+                            won = false;
                             break;
                         }
                         out.println(attack);
@@ -165,6 +168,16 @@ public class BattleTurnFragment extends Fragment implements WifiP2pManager.Conne
                             clientSocket.close();
                     } catch (IOException e) {}
                 }
+            }
+            if (won) { // user won the battle
+                ThePet.setCurrentStamina(ThePet.getCurrentStamina()+20); //arbitrary value
+                System.out.println(ThePet.getCurrentStamina());
+                log = log + "\n\n\n" + "I gained 20 Stamina!!\n";
+            }
+            else { // user lost the battle
+                ThePet.setCurrentStamina(ThePet.getCurrentStamina()-20);
+                System.out.println(ThePet.getCurrentStamina());
+                log = log + "\n\n\n" + "I lost 20 Stamina!!\n";
             }
             return log;
         }
