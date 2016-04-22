@@ -117,6 +117,7 @@ public class TrainingField extends Activity implements SensorEventListener{
          */
         if ((strengthGained*20) >= ThePet.getCurrentStamina()-20) {
             // Not enough Stamina for more, update text to show this
+            mSensorManager.unregisterListener(this); // Stop sensor
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -134,7 +135,7 @@ public class TrainingField extends Activity implements SensorEventListener{
 
     public void updateStrength(View view) {
         ThePet.setCurrentStrength(ThePet.getCurrentStrength() + strengthGained);
-        System.out.println(ThePet.getCurrentStrength());
+        ThePet.setCurrentStamina(ThePet.getCurrentStamina() - strengthGained*20);
         Intent intent = new Intent(this, MainGame.class);
         startActivity(intent);
     }
