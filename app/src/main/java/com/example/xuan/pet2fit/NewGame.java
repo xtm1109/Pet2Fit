@@ -41,6 +41,7 @@ public class NewGame extends Activity {
         PetOptionsFragment fr = (PetOptionsFragment) getFragmentManager().findFragmentById(R.id.pet_options_frag);
         intent.putExtra("pet_option", fr.current_choice);
         startActivity(intent);
+        finish();
     }
 }
 

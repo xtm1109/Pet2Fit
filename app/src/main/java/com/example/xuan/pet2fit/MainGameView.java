@@ -1,6 +1,8 @@
 package com.example.xuan.pet2fit;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
@@ -8,7 +10,7 @@ import android.view.View;
 /**
  * Created by Xuan on 2/11/2016.
  */
-public class MainGameView extends View {
+public class MainGameView extends View implements View.OnClickListener {
     Paint paint = new Paint();
 
     int margin_x;
@@ -18,6 +20,8 @@ public class MainGameView extends View {
     int bar_height;
 
     float text_size;
+
+    MainGame mActivity;
 
     public MainGameView(Context context) {
         super(context);
@@ -35,12 +39,15 @@ public class MainGameView extends View {
     }
 
     private void init() {
+        this.setOnClickListener(this);
         setWillNotDraw(false);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        mActivity = (MainGame) getContext();
 
         margin_x = getWidth() / 20;
         margin_y = getHeight() / 15;
@@ -143,8 +150,6 @@ public class MainGameView extends View {
         canvas.drawRect(s_bar.left, s_bar.top,
                 s_bar.left + ((ThePet.getCurrentStamina() * bar_width) / ThePet.getLevelStamina()),
                 s_bar.bottom, paint);
-
-        System.out.println("draw stamina with currentStamina " + ThePet.getCurrentStamina());
         /* ~~~ DONE ~~~ */
 
         /* ~~~ Draw text ~~~ */
@@ -192,5 +197,26 @@ public class MainGameView extends View {
         canvas.drawText(text, text_box.left + (text_box.width() - text_bound.width()) / 2,
                 text_box.bottom - (text_box.height() - text_bound.height()) / 2, paint);
         /* ~~~ DONE ~~~ */
+    }
+
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(mActivity);
+        builder.setTitle("Pet Statistic");
+        builder.setMessage(
+                "Pet Level: " + ThePet.getCurrentLevel() + "\n" +
+                        "Pet Health: " + ThePet.getCurrentHealth() + "/" + ThePet.getLevelHealth() + "\n" +
+                        "Pet Stamina: " + ThePet.getCurrentStamina() + "/" + ThePet.getLevelStamina() + "\n" +
+                        "Pet Strength: " + ThePet.getCurrentStrength() + "\n");
+        builder.setCancelable(false);
+        builder.setPositiveButton(R.string.ok_label,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //nothing
+                    }
+                });
+        builder.show();
     }
 }

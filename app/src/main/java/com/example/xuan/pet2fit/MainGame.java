@@ -130,7 +130,7 @@ public class MainGame extends Activity implements OnDataPointListener,
 
         sensor_builder.setDataSource(dataSource); // Specify the data source of the request
         sensor_builder.setDataType(dataType); // Specify data type of the request
-        sensor_builder.setSamplingRate(5, TimeUnit.SECONDS);  // Period between requests
+        sensor_builder.setSamplingRate(2, TimeUnit.SECONDS);  // Period between requests
 
         request = sensor_builder.build(); // Construct the request
 
@@ -203,6 +203,8 @@ public class MainGame extends Activity implements OnDataPointListener,
                         top_view.invalidate();
                     }
                 });
+            } else {
+                prefs.edit().putInt("last_step_count", step_count).commit();
             }
         }
     }

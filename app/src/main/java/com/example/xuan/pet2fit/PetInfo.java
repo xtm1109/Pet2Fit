@@ -186,5 +186,6 @@ public class PetInfo extends Activity {
         Intent intent = new Intent (this, MainGame.class);
         intent.putExtra("pet_choice", pet_choice); // pass on what pet
         startActivity(intent);
+        finish();
     }
 }

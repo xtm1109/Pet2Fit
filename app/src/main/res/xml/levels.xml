@@ -4,7 +4,7 @@
         <name>1</name>
 		<health>100</health>
 		<stamina>50</stamina>
-		<xp>15</xp>
+		<xp>100</xp>
 		<strength>7</strength>
 	</level>
 	<level>
